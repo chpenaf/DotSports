@@ -14,10 +14,10 @@ services:
   backend:
     build: . 
     volumes:
-      - .:/code
+      - ./backend/:/code
     ports:
       - "8000:8000"
-    command: bash -c "cd backend && python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     environment:
       - POSTGRES_NAME=dotsports
       - POSTGRES_USER=dotsports
@@ -27,7 +27,7 @@ services:
   frontend:
     build: .
     volumes:
-      - .:/code
+      - ./frontend/:/code
     ports:
       - "4200:4200"
-    command: bash -c "cd frontend && ng serve"
+    command: bash -c "ng serve --host 0.0.0.0"

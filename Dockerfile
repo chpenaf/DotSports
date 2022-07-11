@@ -17,5 +17,6 @@ FROM node:18
 WORKDIR /code
 
 RUN npm install -g @angular/cli
+RUN npm install -g nodemon
 
 COPY . /code/
